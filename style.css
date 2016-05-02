@@ -1,0 +1,145 @@
+/*
+Theme Name: Colegio Santa María de lo Cañas
+Theme URI: http://www.csmlc.cl
+Version: 2.0
+Author: El Buen Camino
+Author URL: http://www.elbuencamino.com
+Description: The CSMLC theme is a magazine style theme, width full width slider and custom templates.
+License: Licencia Creative Commons
+License URL: http://creativecommons.org/licenses/by/3.0/
+*/
+
+@charset "utf-8";
+
+/* CSS Document */
+/*@import url('css/csmlc.css');*/
+@import url('css/main.css');
+@import url('css/header.css');
+
+h2.center.relative span {text-transform:uppercase;}
+.category #foto-encabezado img {margin:0 auto;}
+.container.relative ul li {margin:0 0 40px;}
+.container.relative ul.nav li {margin:0;}
+li .block img {margin:0;}
+.dropdown-menu h2 {display:none;}
+#desc-departamento {
+    margin: 0px 0px 40px 0px;
+}
+#desc-departamento p {margin:0 0 20px;}
+#desc-departamento ul {margin-bottom:30px;}
+#desc-departamento ul li {margin:0 0 10px}
+#desc-departamento img {margin-top:5px; margin-bottom:20px;}
+.container .center.intro{
+  font-family: "Lato";
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #172f51;
+  margin: 0px 0px 60px 0px;
+}
+#generica .titulo-seccion {
+    margin: 0px 0px 60px 0px;
+}
+
+/*CTHIERS*/
+#ciclos #main h4.panel-title{
+  height: 180px;
+  padding: 0px 0px;
+  margin: 0px 0px;
+  position: relative;
+}
+#ciclos #main h4 .absolute{
+  width: 100%;
+  margin: 0px 0px;
+  height: 180px;
+  overflow: hidden;
+}
+#ciclos #main h4 .absolute img{
+  margin: -25% auto;
+  width: 100%
+}
+#ciclos #main .panel-heading{
+  padding: 0px 0px;
+  border: 0px;
+  border-radius: 0px;
+  border: 0px;
+}
+#ciclos #main .panel-group .panel{
+  border-radius: 0px;
+  border: 0px;
+  margin: 0px 0px 40px 0px;
+}
+#ciclos #main .panel-group .panel a{
+  display: block;
+  text-align: center;
+  height: 180px;
+  box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.2);
+}
+#ciclos #main .panel-group .panel a span{
+  display: inline-block;
+  border: 2px solid #FFF;
+  text-transform: uppercase;
+  padding: 10px 60px;
+  letter-spacing: 3px;
+  margin: 68px 0px;
+  font-size: 20px;
+  line-height: 20px;
+  font-family: "Lato";
+  color: #FFF;
+}
+#ciclos #main .panel-group .panel .panel-collapse.collapse{
+  background: #EEE;
+}
+#ciclos #main .panel-group .panel-body {
+  border: 0px;
+  padding: 20px 100px;
+  color: #1A3861;
+}
+#ciclos #main .panel-title a img,
+.titulo-panel a img{
+  position: absolute;
+  right: 20px;
+  background: #1A3861;
+  padding: 14px;
+  border-radius: 100%;
+  bottom: -24px;
+  box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.2);
+  width: 48px;
+  height: 48px;
+}
+a[aria-expanded="true"] img{
+  transform: rotate(180deg);
+  box-shadow: 0px -3px 5px 1px rgba(0,0,0,0.2)!important;
+  transition: all 0.3s;
+  transition-timing-function: ease-out;
+}
+a[aria-expanded="false"] img{
+  transition: all 0.3s;
+  transition-timing-function: ease-out;
+}
+#main div.container h5.center.intro{
+  color: #173052;
+  margin: 0px 0px 100px 0px;
+  line-height: 30px;
+}
+#ciclos #main{
+  margin: 0px 0px 100px 0px;
+}
+#ciclos .panel-body p{
+  font-family: "Lato"
+}
+#noticias .noticia-selected .img-responsive {width:100%;}
+
+.sharify-container ul {float:right !important;}
+.sharify-container li {display:inline-block; text-align:center; width:60px;}
+.sharify-icon {margin:0 !important; float: none; text-align: center; padding: 0px;}
+
+/******CLEARFIX******/
+.clearfix {*zoom:1; display:block;}
+.clearfix:before, .clearfix:after {display:table; content:""; line-height:0; visibility:hidden; height:0;}
+.clearfix:after {clear:both;}
+html[xmlns] .clearfix {display:block;}
+* html .clearfix {height:1%;}
+.clear {clear:both;}
+
+/*END*/
