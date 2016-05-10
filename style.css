@@ -1,10 +1,10 @@
 /*
-Theme Name: Colegio Santa María de lo Cañas
-Theme URI: http://www.csmlc.cl
+Theme Name: Colegio San Joaquín
+Theme URI: http://www.csj.cl
 Version: 2.0
 Author: El Buen Camino
 Author URL: http://www.elbuencamino.com
-Description: The CSMLC theme is a magazine style theme, width full width slider and custom templates.
+Description: The CSJ theme is a magazine style theme, width full width slider and custom templates.
 License: Licencia Creative Commons
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
@@ -16,10 +16,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 @import url('css/main.css');
 @import url('css/header.css');
 
+.cont-main {margin-top:60px;}
+.home .cont-header {padding:0;}
+
 h2.center.relative span {text-transform:uppercase;}
 .category #foto-encabezado img {margin:0 auto;}
 .container.relative ul li {margin:0 0 40px;}
-.container.relative ul.nav li {margin:0;}
+.container.relative ul.nav li {margin:0 0 2px;}
+.container.relative ul#lista-cuadros li, .container.relative ul.bxslider li {margin:0;}
 li .block img {margin:0;}
 .dropdown-menu h2 {display:none;}
 #desc-departamento {
@@ -40,8 +44,13 @@ li .block img {margin:0;}
 #generica .titulo-seccion {
     margin: 0px 0px 60px 0px;
 }
+#infra-desc div.slide-int, #infra-desc div.carousel-inner, #infra-desc div.item.active {display:block !important; visibility:visible !important;}
+#infra-desc div.item.active, #infra-desc .carousel-control {height:320px;}
+#infra-desc div.item {opacity:0;}
+#infra-desc div.item.active {opacity:1;}
 
 /*CTHIERS*/
+.main-act #nav-ciclos ul.nav li:nth-child(2) {display:none;}
 #ciclos #main h4.panel-title{
   height: 180px;
   padding: 0px 0px;
@@ -133,6 +142,39 @@ a[aria-expanded="false"] img{
 .sharify-container ul {float:right !important;}
 .sharify-container li {display:inline-block; text-align:center; width:60px;}
 .sharify-icon {margin:0 !important; float: none; text-align: center; padding: 0px;}
+.car-noticia .sharify-container {display:none;}
+.car-noticia .block img {width:100%;}
+
+.burbuja-alerta input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 5px 15px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-top:-13px;
+    float:right;
+    width:90%;
+}
+.burbuja-alerta-aside .wpcf7-email {width:100%; font-weight:300; font-style:italic;}
+.burbuja-alerta input[type="submit"]:hover {background:#fff !important; color:#393B5C;}
+.wysija-paragraph.first {width:60%; float:left;}
+.wysija-input {font-weight:300 !important; font-style:italic;}
+.wysija-submit {width:40%; float:right;}
+.widget_wysija_cont p label, .mailpoetsignup {display:none !important;}
+.burbuja-alerta p input {width:100%;}
+.burbuja-alerta .wpcf7-email {padding-right:15px; width:100%; font-weight:300 !important; font-style:italic;}
+div.wpcf7-validation-errors {border: 2px solid #f7e700; display: block; clear: both; width: 100%;}
+
+.container .mix,
+.container .gap{
+  display: inline-block;
+}
+
+.container .mix{
+  display: none;
+}
+#accesos-directos a {height:170px;}
 
 /******CLEARFIX******/
 .clearfix {*zoom:1; display:block;}

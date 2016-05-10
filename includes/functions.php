@@ -3,7 +3,7 @@ if ( !defined('ABSPATH')) exit;
 /**
  * Theme's Functions and Definitions
  * @file           functions.php
- * @package        csmlc 
+ * @package        csj 
 **/
 
 add_post_type_support('page', 'excerpt');
@@ -18,12 +18,14 @@ function wpse_setup_theme() {
     }
     if ( function_exists( 'add_image_size' ) ) { 
         add_image_size( 'encabezado', 2000, 250, array( 'center', 'center'));
+        add_image_size( 'sport', 2000, 450, array( 'center', 'center'));
         add_image_size( 'generica', 540, 360, array( 'center', 'center'));
         add_image_size( 'news', 300, 200, array( 'center', 'center'));
         add_image_size( 'news-home', 265, 150, array( 'center', 'center'));
         add_image_size( 'news-det', 870, 580, array( 'center', 'center'));
         add_image_size( 'news-featured', 600, 400, array( 'center', 'center'));
         add_image_size( 'gal', 360, 240, array( 'center', 'center'));
+        add_image_size( 'gal-image', 480, 320, array( 'center', 'center'));
         add_image_size( 'banner', 555, 220, array( 'center', 'center'));
         add_image_size( 'child', 650, 350, array( 'center', 'center'));
         add_image_size( 'act', 150, 190, array( 'center', 'center'));
@@ -80,7 +82,7 @@ function content($limit) {
 function my_custom_login_logo() {
     echo '<style type="text/css">
         body.login {background-image:url('.get_bloginfo('template_directory').'/imag/back/bg-home.jpg) !important; background-position:center top;}
-        h1 a { background-image:url('.get_bloginfo('template_directory').'/imag/logo/logo_csmlc_admin.png) !important; background-size:320px 67px !important; width:320px !important; height:67px !important;}
+        h1 a { background-image:url('.get_bloginfo('template_directory').'/imag/logo/logo_csj_admin.png) !important; background-size:320px 67px !important; width:320px !important; height:67px !important;}
     </style>';
 }
 
@@ -142,7 +144,7 @@ function get_attachment_id_from_src ($link) {
 
 //=================================================================== GET CUSTOM TAXONOMY TERMS //
 function get_custom_terms($taxonomies, $args_custom){
-    $args_custom = array('orderby'=>'asc','hide_empty'=>true);
+    $args_custom = array('orderby'=>'asc','hide_empty'=>true, 'taxonomy'=>'actividades-extraprogramaticas');
     $custom_terms = get_terms(array($taxonomies), $args_custom);
     foreach($custom_terms as $term){
         echo '<li class="filter" data-filter=".'.$term->slug.'" role="presentation">'.$term->name.'</li>';
@@ -205,7 +207,7 @@ global $wpdb;
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';
-            $i++; } 
+            $i++; wp_reset_query(); } 
         }
     }
 }
@@ -272,8 +274,8 @@ function create_post_type_actividades() {
     register_post_type( 'actividades',
         array(
             'labels' => array(
-                'name' => __('Act. Extraprogramáticas'),
-                'singular_name' => __('Act. Extraprogramática'),
+                'name' => __('Act. Extra Programáticas'),
+                'singular_name' => __('Act. Extra Programática'),
                 'add_new' => __('Agregar Actividad'),
                 'add_new_item' => __('Agregar nueva Actividad'),
                 'edit_item' => __('Editar Actividad'),
@@ -434,6 +436,57 @@ function create_post_type_plan() {
 }
 
 //=================================================================== POST TYPE AND TAXONOMY // 
+add_action( 'init', 'create_post_type_guias' );
+function create_post_type_guias() {
+    register_post_type( 'guias',
+        array(
+            'labels' => array(
+                'name' => __('Guías de Estudio'),
+                'singular_name' => __('Guía'),
+                'add_new' => __('Agregar guía'),
+                'add_new_item' => __('Agregar nueva guía'),
+                'edit_item' => __('Editar guía'),
+                'new_item' => __('Nueva guía'),
+                'all_items' => __('Todas las guías'),
+                'view_item' => __('Ver guías'),
+                'search_items' => __('Buscar guías')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'ver-guias-de-estudio', 'hierarchical' => true),
+            'hierarchical' => true,
+            'show_ui' => true,
+            'query_var' => true,
+            'update_count_callback' => '_update_post_term_count',
+            'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' )
+        )
+    );
+    flush_rewrite_rules();
+}
+
+add_action('init', 'create_taxonomy_guias', 0);
+function create_taxonomy_guias() {
+    $labels = array(
+        'name'                => __( 'Guías Cursos', 'taxonomy general name' ),
+        'singular_name'       => __( 'Guías Curso', 'taxonomy singular name' ),
+        'search_items'        => __( 'Buscar en Cursos' ),
+        'all_items'           => __( 'Todos los Cursos' ),
+        'edit_item'           => __( 'Editar Cursos' ), 
+        'update_item'         => __( 'Actualizar Cursos' ),
+        'add_new_item'        => __( 'Agregar Cursos' ),
+        'menu_name'           => __( 'Cursos' )
+    );  
+    $args = array(
+        'hierarchical'        => true,
+        'labels'              => $labels,
+        'show_ui'             => true,
+        'show_admin_column'   => true,
+        'query_var'           => true,
+    );
+    register_taxonomy('guias-cursos', array('guias'), $args);
+}
+
+//=================================================================== POST TYPE AND TAXONOMY // 
 add_action( 'init', 'create_post_type_horarios' );
 function create_post_type_horarios() {
     register_post_type( 'horarios',
@@ -568,14 +621,20 @@ function create_taxonomy_galerias() {
 function get_gallery_images(){
     global $wpdb;
     $gallery_pict = $wpdb->get_results("SELECT ID, post_title, post_content, post_excerpt FROM $wpdb->posts WHERE post_type = 'attachment' AND post_mime_type LIKE 'image%' AND post_excerpt LIKE 'galeria%' AND post_parent = '".get_the_ID()."' ORDER BY menu_order");
-    if ( $gallery_pict ) {
-        foreach ( $gallery_pict as $gal ) {
-            echo '<div class="col-xs-3">';
-                echo '<a href="'.wp_get_attachment_url($gal->ID).'" class="img-responsive" rel="prettyPhoto[gallery1]" title="'.$gal->post_title.'">';
-                    echo wp_get_attachment_image($gal->ID, 'gal-image',array('class' => 'img-responsive'));
-                echo '</a>';
-            echo '</div>';
-        } 
+    if ($gallery_pict) {
+        echo '<ul class="bxslider">';
+        foreach ($gallery_pict as $gal) {
+            echo '<li>';
+                echo wp_get_attachment_image($gal->ID, 'gal-image',array('class' => 'img-responsive'));
+            echo '</li>';
+        } $i++;
+        echo '</ul>';
+        echo '<div id="bx-pager">';
+        $i = 0;
+        foreach ($gallery_pict as $gal) {
+            echo '<a data-slide-index="'.$i.'" href=""></a>';
+        $i++; } 
+        echo '</div>';
     }
 }
 
@@ -601,10 +660,10 @@ function my_connection_types() {
 add_action( 'p2p_init', 'my_connection_types' );
 
 //=================================================================== WORDPRESS WIDGETS// 
-    function csmlc_widgets_init() {
+    function csj_widgets_init() {
 		register_sidebar(array(
-            'name' => __('Sidebar General', 'csmlc'),
-            'description' => __('Sidebar general sitio web', 'csmlc'),
+            'name' => __('Sidebar General', 'csj'),
+            'description' => __('Sidebar general sitio web', 'csj'),
             'id' => 'sidebar-general',
             'before_title' => '<h2>',
             'after_title' => '</h2>',
@@ -613,6 +672,6 @@ add_action( 'p2p_init', 'my_connection_types' );
         ));
     }
 	
-    add_action('widgets_init', 'csmlc_widgets_init');
+    add_action('widgets_init', 'csj_widgets_init');
 //
 ?>

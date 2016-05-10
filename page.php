@@ -11,15 +11,15 @@
 						echo wp_get_attachment_image( $image, $size );
 					}
 				?>
-	    	</div>
-			<h2 class="titulo-seccion center relative"><span><? the_title();?></span></h2>
-
-			<div id="proyecto-educativo" class="container relative">
+			</div>
+			<h2 class="titulo-seccion center relative"><span class="upper"><img src="<?php bloginfo('template_directory'); ?>/img/iconos/noticias.svg"><? the_title();?></span></h2>
+			
+			<div class="container relative cont-main">
 				<?php
 					global $post;
 					if ( has_excerpt( $post->ID ) ) {
 						$excerpt= apply_filters('the_excerpt', get_post_field('post_excerpt', $post->ID));
-					    echo '<div class="center intro bajada">';
+					    echo '<div class="center intro">';
 					    	if(is_page('proyecto-educativo')){
 					    		echo '<img src=""'.get_bloginfo('template_directory').'/img/iconos/ico-globo.svg"><br>';
 					    	}

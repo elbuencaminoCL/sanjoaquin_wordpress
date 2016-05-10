@@ -7,7 +7,7 @@
                                 if ( $query->have_posts() ) {
                                     while ( $query->have_posts() ) {
                                         $query->the_post();
-                                        echo '<a href="'.get_the_permalink().'" class="block clearfix evento">';
+                                        echo '<a href="'.get_the_permalink().'" class="bblock clearfix evento shadow">';
                                             echo '<div class="col-sm-12">';
                                                 echo '<div class="row">';
                                                     echo '<div class="col-sm-3 col-xs-3 fecha">';

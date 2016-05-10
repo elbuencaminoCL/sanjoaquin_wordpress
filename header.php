@@ -25,6 +25,10 @@
 	<!-- styles / fonts -->
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/bootstrap.css" />
 	<link href="<?php bloginfo('template_directory'); ?>/style.css" rel="stylesheet" media="screen" />
+	<link href="<?php bloginfo('template_directory'); ?>/css/jquery.bxslider.css" rel="stylesheet" media="screen">
+	<? if(is_page('infraestructura')) { ?>
+		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/cthiers.css" />
+	<? } ?>
 	<!--[if lt IE 9]>
 	    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 	<![endif]-->
@@ -61,8 +65,7 @@
 						            <ul class="dropdown-menu">
 										<li><a href="<?php bloginfo('wpurl'); ?>">ESPAÑOL</a></li>
 						                <li><a href="<?php bloginfo('wpurl'); ?>/en/">ENGLISH</a></li>
-						                <li><a href="<?php bloginfo('wpurl'); ?>/sv/">SUECO</a></li>
-									</ul>
+						            </ul>
 								</li>
 							</ul>
 							<?php wp_nav_menu( array('menu' => 'Menu Auxiliar', 'menu_class' => 'nav navbar-nav navbar-right', 'walker' => new wp_bootstrap_navwalker())); ?>

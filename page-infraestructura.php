@@ -31,48 +31,24 @@
 
 				<div class="clearfix listado-infra">
 					<div class="col-sm-7 col-xs-12">
-						<ul>
-								<li>2 Multicanchas y 1 Gimnasio</li>
-								<li>Laboratorio de Ciencias</li>
-								<li>Casino</li>
-								<li>Ámplios espacios de áreas verdes</li>
-						</ul>
+						<?
+							$izquierda = get_field('_contenido_bloque_izquierda');
+							echo $izquierda;
+						?>
 					</div>
 					<div class="col-sm-5 col-xs-12">
-						<ul>
-							<li>Granja</li>
-							<li>Piscina</li>
-							<li>Biblioteca</li>
-						</ul>
+						<?
+							$derecha = get_field('_contenido_bloque_derecha');
+							echo $derecha;
+						?>
 					</div>
 				</div>
 
-					<div id="lugares" class="dropdown">
-						<button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							Selecciona un punto para ver más información<span class="glyphicon glyphicon-hand-up"></span>
-						</button>
-
-						<ul id="lista-cuadros" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a id="botonA"><span>A</span>Dirección - Admisión</a></li>
-							<li><a id="botonB"><span>B</span>Atención Apoderados</a></li>
-							<li><a id="botonC"><span>C</span>Salas Infant School</a></li>
-							<li><a id="botonD"><span>D</span>Salas Elementary School</a></li>
-							<li><a id="botonE"><span>E</span>Granja</a></li>
-							<li><a id="botonF"><span>F</span>Multicancha</a></li>
-							<li><a id="botonG"><span>G</span>Kiosko</a></li>
-							<li><a id="botonH"><span>H</span>Salas High School</a></li>
-							<li><a id="botonI"><span>I</span>Enfermeria</a></li>
-							<li><a id="botonJ"><span>J</span>Casino</a></li>
-							<li><a id="botonK"><span>K</span>Bodega</a></li>
-							<li><a id="botonL"><span>L</span>Biblioteca</a></li>
-							<li><a id="botonM"><span>M</span>Laboratorio</a></li>
-							<li><a id="botonN"><span>N</span>Gimnasio</a></li>	
-							<li><a id="toggle-lugares"><span class="glyphicon glyphicon-menu-up"></span></a></li>						
-						</ul>
-					</div>
-
-					<!-- SELECTOR DE LUGARES -->
-					<div id="infra-desc">
+				<div id="lugares" class="dropdown">
+					<button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						Selecciona un punto para ver más información<span class="glyphicon glyphicon-hand-up"></span>
+					</button>
+					<ul id="lista-cuadros" class="dropdown-menu" aria-labelledby="dropdownMenu1">
 						<?php 
                             $infraestructura = array (
                                 'post_type'  => 'infraestructura',
@@ -82,254 +58,213 @@
                             if ( $infra->have_posts() ) {
                                 while ( $infra->have_posts() ) : $infra->the_post();
                         ?>
-                            <div id="cuadroA" class="cuadro dropdown open">
-								<h3 class="btn dropdown-toggle clearfix upper">
-									<? the_title();?> <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-								</h3>
-								<article class="dropdown-menu">
-									<img class="img-responsive" src="img/slider1.jpg">
-									<? the_content();?>
-								</article>
-							</div>
-                        <?
+							<li>
+								<?
+			                        $selected = get_field('_ubicacion');
+			                        if ($selected == 'a') {
+										echo '<a id="botonA"><span>A</span>';
+									} 
+									if($selected == 'b') {
+										echo '<a id="botonB"><span>B</span>';
+									} 
+									if($selected == 'c') {
+										echo '<a id="botonC"><span>C</span>';
+									}
+									if($selected == 'd') {
+										echo '<a id="botonD"><span>D</span>';
+									}
+									if($selected == 'e') {
+										echo '<a id="botonE"><span>E</span>';
+									}
+									if($selected == 'f') {
+										echo '<a id="botonF"><span>F</span>';
+									}
+									if($selected == 'g') {
+										echo '<a id="botonG"><span>G</span>';
+									}
+									if($selected == 'h') {
+										echo '<a id="botonH"><span>H</span>';
+									}
+									if($selected == 'i') {
+										echo '<a id="botonI"><span>I</span>';
+									}
+									if($selected == 'j') {
+										echo '<a id="botonJ"><span>J</span>';
+									}
+									if($selected == 'k') {
+										echo '<a id="botonK"><span>K</span>';
+									}
+									if($selected == 'l') {
+										echo '<a id="botonL"><span>L</span>';
+									}
+									if($selected == 'm') {
+										echo '<a id="botonM"><span>M</span>';
+									}
+									if($selected == 'n') {
+										echo '<a id="botonN"><span>N</span>';
+									}
+									if($selected == 'o') {
+										echo '<a id="botonO"><span>O</span>';
+									}
+									if($selected == 'p') {
+										echo '<a id="botonP"><span>P</span>';
+									}
+									if($selected == 'q') {
+										echo '<a id="botonQ"><span>Q</span>';
+									}
+									if($selected == 'r') {
+										echo '<a id="botonR"><span>R</span>';
+									}
+									if($selected == 's') {
+										echo '<a id="botonS"><span>S</span>';
+									}
+									if($selected == 't') {
+										echo '<a id="botonT"><span>T</span>';
+									}
+									if($selected == 'u0') {
+										echo '<a id="botonU"><span>U</span>';
+									}
+									if($selected == 'v') {
+										echo '<a id="botonV"><span>V</span>';
+									}
+									if($selected == 'w') {
+										echo '<a id="botonW"><span>W</span>';
+									}
+									if($selected == 'x') {
+										echo '<a id="botonX"><span>X</span>';
+									}
+									if($selected == 'y') {
+										echo '<a id="botonY"><span>Y</span>';
+									}
+									if($selected == 'z') {
+										echo '<a id="botonZ"><span>Z</span>';
+									}
+								?>
+										<? the_title();?>
+									</a>
+							</li>
+						<?
                                 endwhile;
+                                echo '<li><a id="toggle-lugares"><span class="glyphicon glyphicon-menu-up"></span></a></li>';
                                 wp_reset_postdata();
                             }
-                        ?>
+                        ?>						
+					</ul>
+				</div>
 
-
-						<div id="cuadroA" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								DIRECCIÓN - ADMISION <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
+				<!-- SELECTOR DE LUGARES -->
+				<div id="infra-desc">
+					<?php 
+                        $infraestructura = array (
+                            'post_type'  => 'infraestructura',
+                            'posts_per_page' => -1
+                        );
+                        $infra = new WP_Query( $infraestructura );
+                        if ( $infra->have_posts() ) {
+                            while ( $infra->have_posts() ) : $infra->the_post();
+                    ?>
+                      	<?
+			                $selected = get_field('_ubicacion');
+	                        if ($selected == 'a') {
+								echo '<div id="cuadroA" class="cuadro dropdown open">';
+							} 
+							if($selected == 'b') {
+								echo '<div id="cuadroB" class="cuadro dropdown open">';
+							} 
+							if($selected == 'c') {
+								echo '<div id="cuadroC" class="cuadro dropdown open">';
+							} 
+							if($selected == 'd') {
+								echo '<div id="cuadroD" class="cuadro dropdown open">';
+							} 
+							if($selected == 'e') {
+								echo '<div id="cuadroE" class="cuadro dropdown open">';
+							} 
+							if($selected == 'f') {
+								echo '<div id="cuadroF" class="cuadro dropdown open">';
+							} 
+							if($selected == 'g') {
+								echo '<div id="cuadroG" class="cuadro dropdown open">';
+							} 
+							if($selected == 'h') {
+								echo '<div id="cuadroH" class="cuadro dropdown open">';
+							}
+							if($selected == 'i') {
+								echo '<div id="cuadroI" class="cuadro dropdown open">';
+							}
+							if($selected == 'j') {
+								echo '<div id="cuadroJ" class="cuadro dropdown open">';
+							}
+							if($selected == 'k') {
+								echo '<div id="cuadroK" class="cuadro dropdown open">';
+							}
+							if($selected == 'l') {
+								echo '<div id="cuadroL" class="cuadro dropdown open">';
+							}
+							if($selected == 'm') {
+								echo '<div id="cuadroM" class="cuadro dropdown open">';
+							}
+							if($selected == 'n') {
+								echo '<div id="cuadroN" class="cuadro dropdown open">';
+							}
+							if($selected == 'o') {
+								echo '<div id="cuadroO" class="cuadro dropdown open">';
+							}
+							if($selected == 'p') {
+								echo '<div id="cuadroP" class="cuadro dropdown open">';
+							}
+							if($selected == 'q') {
+								echo '<div id="cuadroQ" class="cuadro dropdown open">';
+							}
+							if($selected == 'r') {
+								echo '<div id="cuadroR" class="cuadro dropdown open">';
+							}
+							if($selected == 's') {
+								echo '<div id="cuadroS" class="cuadro dropdown open">';
+							}
+							if($selected == 't') {
+								echo '<div id="cuadroT" class="cuadro dropdown open">';
+							}
+							if($selected == 'u') {
+								echo '<div id="cuadroU" class="cuadro dropdown open">';
+							}
+							if($selected == 'v') {
+								echo '<div id="cuadroV" class="cuadro dropdown open">';
+							}
+							if($selected == 'w') {
+								echo '<div id="cuadroW" class="cuadro dropdown open">';
+							}
+							if($selected == 'x') {
+								echo '<div id="cuadroX" class="cuadro dropdown open">';
+							}
+							if($selected == 'y') {
+								echo '<div id="cuadroy" class="cuadro dropdown open">';
+							}
+							if($selected == 'z') {
+								echo '<div id="cuadroZ" class="cuadro dropdown open">';
+							}
+						?>
+                            <h3 class="btn dropdown-toggle clearfix upper">
+								<? the_title();?> <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
 							</h3>
-
 							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
+								<? echo get_gallery_images();?>
+								<? the_content();?>
 							</article>
-							
 						</div>
-
-						<div id="cuadroB" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								ATENCIÓN APODERADOS <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroC" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								SALAS INFANT SCHOOL <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroD" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								SALAS ELEMENTARY SCHOOL <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroE" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								GRANJA <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroF" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								MULTICANCHA <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroG" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								KIOSKO <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroH" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								SALAS HIGH SCHOOL <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroI" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								ENFERMERIA <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroJ" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								CASINO <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroK" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								BODEGA <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroL" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								BIBLIOTECA <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroM" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								LABORATORIO <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-						<div id="cuadroN" class="cuadro dropdown open">
-
-							<h3 class="btn dropdown-toggle clearfix">
-								GIMNASIO <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
-							</h3>
-
-							<article class="dropdown-menu">
-
-								<img class="img-responsive" src="img/slider1.jpg">
-
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-							</article>
-							
-						</div>
-
-					</div><!-- /FIN DE SELECTOR DE LUGARS -->
-
-					
-			</div><!-- CONTAINER -->
-
-			<div id="mapa" class="hidden-xs">
-				<img class="img-responsive" src="img/mapa_colegio.svg">
+                    <?
+                        endwhile;
+                        wp_reset_postdata();
+                        }
+                    ?>
+				</div>
 			</div>
+
+			<? 
+				if(has_post_thumbnail()){
+				    echo '<div id="mapa" class="hidden-xs">'.get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-responsive')).'</div>';
+				} 
+			?>
 
 		<?php endwhile; else: ?>
             <div class="col-xs-12">

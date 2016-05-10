@@ -8,10 +8,9 @@
 body {
     margin: 0;
     padding: 0;
-    /*background: #EEE;*/ 
 }
 #header{
-	font-family: "Exo 2"
+	font-family: 'Exo 2', Sans-serif;
 }
 #header #top-menu {
     background: #116450;
@@ -27,6 +26,23 @@ body {
     padding: 5px 15px;
     font-size: 12px;
     text-transform: uppercase;
+}
+/* AGREGADO POR RANDY */
+#header #top-menu ul li a:hover{
+	background-color: #257FA7;
+}
+#header #top-menu ul li a:focus{
+	background-color: #257FA7;
+}
+#header #top-menu .dropdown span{
+	margin-left: 5px;
+}
+#header #top-menu .dropdown{
+	z-index: 3001;
+}
+#header #top-menu .dropdown-menu{
+	background-color: #1A3861;
+	min-width: 100px;
 }
 #header .nav-toggler-movil{
 	float: left;
@@ -107,6 +123,15 @@ body {
     color: #2fb1be;
     transition: all 0.5s;
 }
+#header #menu-principal ul li a:focus{
+	color: #fff;
+	background-color: #30B1BE;
+}
+#header #menu-principal ul li a span{
+	color: #116450;
+	margin-left: 5px;
+}
+
 #header #menu-principal .dropdown-menu li a{
 	padding: 10px;
 }
@@ -120,9 +145,9 @@ body {
 	width: 75%;
 	padding: 0px 0px;
 }
-#header #menu-principal .navbar-brand img{
-	max-width: 208px;
-	margin: -10px 0px -7px 0px;
+#header #menu-principal .navbar-brand img {
+    max-width: 208px;
+    margin: -10px 0px -7px 0px;
 }
 #header .dropper{
 	float: right;
@@ -140,7 +165,7 @@ body {
 
 	#header #menu-principal ul li a{
 		font-size: 11px;
-		padding: 17px 4px;
+		padding: 20px 8px;
 	}	
 
 }
@@ -164,7 +189,7 @@ body {
 		width: auto;
 	}
 	#header{
-		background: #116450
+		background: #116450;
 	}
 	#header #top-menu{
 		margin: 20px 0px 0px 0px;
@@ -196,9 +221,9 @@ body {
 		color: #FFF;
 	}
 	#header #top-menu ul li a:hover{
-		background: #FFF;
+		background: #083F32;
 		border: 0px;
-		color: #116450;		
+		color: #fff;		
 	}
 	#header #menu-principal ul li a .dropper{
 		display: none;
@@ -211,7 +236,7 @@ body {
 		border: 0px;
 	}
 	#header .navbar-default .navbar-toggle .icon-bar{
-		background: #116450;
+		background: #30B1BE;
 	}
 	#header .fb:hover{
 		background: #3b5998;
@@ -229,19 +254,22 @@ body {
 	    content: " ";
 	}
 	#header .open a.dropdown-toggle{
-		background: #7F1821;
+		background: #30B1BE;
 		color: #FFF;
 	}
 	#header .navbar-nav .open .dropdown-menu{
 		background: #EEE;
 	}
 	#header .navbar-nav .open .dropdown-menu a{
-		color: #116450;
+		color: #1A3861;
 		padding: 10px 80px;
     	text-align: left;
 	}
 	#header .navbar-nav .open .dropdown-menu a:hover{
 		color: #FFF;
+	}
+	#header #menu-principal ul li a:hover span{
+	color: #fff;
 	}
 
 }
@@ -257,7 +285,7 @@ body {
 @media only screen and (min-width : 992px) and (max-width : 1024px) {
 
 	#header #menu-principal ul li a {
-	    line-height: 30px;
+	    line-height: 24px;
 	}
 
 }

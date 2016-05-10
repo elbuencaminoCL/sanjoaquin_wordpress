@@ -24,6 +24,11 @@
             </div>
         </div>
 
+        <div id="segmentos" class="clearfix block">
+            <?php if(function_exists('home_pages')) home_pages("id=".$post->ID."&class=hp&childs=true"); ?>
+            <? wp_reset_query();?>
+        </div>
+
         <div id="accesos-directos">
             <div class="container">
                 <div class="center">
@@ -35,23 +40,37 @@
             </div>
         </div>
 
-        <div id="segmentos" class="clearfix block">
-            <?php if(function_exists('home_pages')) home_pages("id=".$post->ID."&class=hp&childs=true"); ?>
-        </div>
-
         <div id="noticias" class="block-image clearfix block">
             <div class="container">             
                 <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 center">
-                    <h3>Últimas noticias</h3>
+                    <h1 class="t-exo">Últimas noticias</h1>
                 </div>
                 <div class="row">
                     <? include_once('modulos/noticias.php');?>
                     <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 center">
-                        <a href="<?php bloginfo('wpurl'); ?>/noticias/" class="todas-noticias">Ver todas las noticias</a>
+                        <a href="<?php bloginfo('wpurl'); ?>/noticias/" class="todas-noticias upper t-exo">Ver todas las noticias</a>
                     </div>
                 </div>
             </div>
-        </div>          
+        </div>    
+
+        <? 
+            $sport = get_page_by_path('sport-center');
+            $image = get_field('_imagen_home', $sport);
+            $excerpt= apply_filters('the_excerpt', get_post_field('post_excerpt', $sport->ID));
+            echo '<div id="sportcenter">';
+                if($image) {
+                    echo '<img src="'.$image.'" alt=" '.get_the_title($sport).'" />';
+                }
+                echo '<div class="fondo-azul">';
+                    echo '<div class="container">';
+                        echo '<h1 class="upper">'.get_the_title($sport).'</h1>';
+                        echo '<h3>'.$excerpt.'</h3>';
+                        echo '<a class="btn btn-default" href="'.get_the_permalink($sport).'">Ver más Info</a>';
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
+        ?>    
 
         <div id="main-bottom">
             <div class="container">
@@ -87,13 +106,13 @@
                             </div>
                         <?php endif; ?>
 
-                        <a href="<?php bloginfo('wpurl'); ?>/extra-programaticas/" class="ver-todos pull-right">Ver Todos</a>
+                        <a href="<?php bloginfo('wpurl'); ?>/academias/" class="ver-todos pull-right">Ver Todos</a>
                     </div>
 
                     <div id="calendario" class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <h3>Calendario</h3>
                         <? include_once('modulos/calendar.php');?>
-                        <a href="<?php bloginfo('wpurl'); ?>/calendario-de-eventos/" class="ver-todos pull-right">Ver todo el Calendario</a>
+                        <a href="<?php bloginfo('wpurl'); ?>/eventos/" class="ver-todos pull-right">Ver todo el Calendario</a>
                     </div>
                 </div>
             </div>              

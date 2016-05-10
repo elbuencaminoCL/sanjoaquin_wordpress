@@ -167,7 +167,7 @@ a:hover, a:focus, a:active {
     top: 100px;
 }
 #foto-encabezado img {
-  margin-top: -5%;
+  margin-top:0;
 }
 .titulo-encabezado {
     height: auto;
