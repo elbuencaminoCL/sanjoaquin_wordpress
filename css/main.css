@@ -1169,21 +1169,24 @@ padding-top: 70px;
   margin-left: -15px;
   padding: 20px 0px;
 }
-#nav-ciclos li a {
+#nav-ciclos li {
     color: #888788;
     font-weight: 600;
     font-size: 18px;
     padding: 10px 0px;
-    margin: 0px 35px;
+    margin: 0px 15px;
     text-transform: uppercase;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    
 }
-#nav-ciclos li a:hover{
+#nav-ciclos li:hover{
   background-color: #fff;
   border-bottom: 3px solid #60B49B;
   border-radius: 0;
   color: #60B49B;
 }
-#nav-ciclos li.active a{
+#nav-ciclos li.active{
   background-color: #fff;
   color: #60B49B;
   border-bottom: 3px solid #60B49B;
