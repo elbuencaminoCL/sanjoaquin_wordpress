@@ -111,7 +111,7 @@
 					    if ( $actividades->have_posts() ) : while ( $actividades->have_posts() ) : $actividades->the_post();
 					    $terms = get_the_terms( $post->ID, 'actividades-extraprogramaticas' );
 					?>
-						<div class="col-md-4 col-sm-6 col-xs-12 mix <? foreach($custom_terms as $term){ echo $term->slug;} ?>">
+						<div class="col-md-4 col-sm-6 col-xs-12 mix <? foreach($terms as $term){ echo $term->slug.' ';} ?> ">
 							<div class="caluga-taller shadow">
 								<div class="col-sm-5 col-xs-12 foto-taller">
 									<?php

@@ -4,7 +4,7 @@
                             $titulo = get_sub_field('_titulo_acceso');
                             $link = get_sub_field('_enlace_acceso_directo');
                         ?>
-                            <div class="col col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <div class="col col-lg-2 col-md-2 col-sm-4 col-xs-12">
                                 <a class="block clearfix" href="<?php echo $link; ?>">
                                     <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-4">
                                         <img class="img-responsive" src="<?php echo $image; ?>" alt="<?php echo $titulo ?>" />

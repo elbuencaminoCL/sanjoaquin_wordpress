@@ -13,13 +13,14 @@
 
 			<div class="container relative galeria-detalle">
 				<div class="row">
+
 					<div class="col-md-9 col-xs-12">
+
 						<h1 class="upper"><? the_title();?></h1>
 						<div class="col-lg-12">
 							<div class="row">
 								<div class="col-sm-3 datos-ficha-galeria"><span class="glyphicon glyphicon-calendar"></span><? echo get_the_date();?></div>
-								<div class="col-sm-3 upper datos-ficha-galeria">
-									<?
+								<div class="col-sm-3 upper datos-ficha-galeria"><?
 										$terms = get_the_terms( $post->ID, 'galerias-multimedia' );
 										if($terms){
 											foreach($terms as $term){
@@ -27,18 +28,18 @@
 									            echo '| '.$term->name;
 									        }
 										}
-									?>
-								</div>
+									?></div>
 							</div>
 						</div>
+<? the_content();?>
 
-						<? the_content();?>
-
-						<img class="img-responsive" src="img/1600.jpg">
+						<div class="clearfix int-galerias">
+							<? echo get_detail_images();?>
+						</div>
 
 						<div class="col-sm-5">
 							<div class="row">
-								<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('template_directory'); ?>/nuestro-colegio/galeria-multimedia/"><span class="glyphicon glyphicon-menu-left"></span>  Volver a Galería Multimedia</a>
+								<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('wpurl'); ?>/nuestro-colegio/galerias/"><span class="glyphicon glyphicon-menu-left"></span>  Volver a Galería Multimedia</a>
 							</div>
 						</div>
 
@@ -58,7 +59,10 @@
 							<input type="mail" placeholder="Escribe aquí tu mail"></input>
 							<button type="submit" class="btn-primary btn-lg btn-block btn-suscribirse">Suscribirse</button>
 						</div>
+
+
 					</div>
+
 				</div>
 			</div>
 		</div>

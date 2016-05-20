@@ -16,6 +16,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 @import url('css/main.css');
 @import url('css/header.css');
 
+body {
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes fontfix {
+    from { opacity: 1; }
+    to   { opacity: 1; }
+}
+
 .cont-main {margin-top:60px;}
 .home .cont-header {padding:0;}
 
@@ -174,7 +187,7 @@ div.wpcf7-validation-errors {border: 2px solid #f7e700; display: block; clear: b
 .container .mix{
   display: none;
 }
-#accesos-directos a {height:170px;}
+/*#accesos-directos a {height:170px;}*/
 
 /******CLEARFIX******/
 .clearfix {*zoom:1; display:block;}

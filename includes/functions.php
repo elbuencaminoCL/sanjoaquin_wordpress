@@ -28,7 +28,8 @@ function wpse_setup_theme() {
         add_image_size( 'gal-image', 480, 320, array( 'center', 'center'));
         add_image_size( 'banner', 555, 220, array( 'center', 'center'));
         add_image_size( 'child', 650, 350, array( 'center', 'center'));
-        add_image_size( 'act', 150, 190, array( 'center', 'center'));
+        add_image_size( 'act', 450, 570, array( 'center', 'center'));
+        add_image_size( 'taller', 655, 440, array( 'center', 'center'));
     }
 } 
 add_action( 'after_setup_theme', 'wpse_setup_theme' );
@@ -635,6 +636,38 @@ function get_gallery_images(){
             echo '<a data-slide-index="'.$i.'" href=""></a>';
         $i++; } 
         echo '</div>';
+    }
+}
+
+//=================================================================== IMAGES FUNCTIONS//
+function get_detail_images(){
+    global $wpdb;
+    $detail_pict = $wpdb->get_results("SELECT ID, post_title, post_content, post_excerpt FROM $wpdb->posts WHERE post_type = 'attachment' AND post_mime_type LIKE 'image%' AND post_excerpt LIKE 'galeria%' AND post_parent = '".get_the_ID()."' ORDER BY menu_order");
+    if ($detail_pict) {
+        echo '<div class="carousel slide slide-int carousel-fade" data-ride="carousel">';
+            echo '<ol class="carousel-indicators">';
+                $i = 0;
+                foreach ($detail_pict as $det) {
+                    echo '<li data-target=".carousel-fade" data-slide-to="'.$i.'"></li>';
+                $i++; }
+            echo '</ol>';
+            echo '<div class="carousel-inner" role="listbox">';
+                $i = 0;
+                foreach ($detail_pict as $det) {
+                    echo '<div class="item">';
+                        echo wp_get_attachment_image($det->ID, 'news-det',array('class' => 'img-responsive'));
+                    echo '</div>';
+                } $i++;
+            echo '</div>';
+        echo '</div>';
+        echo '<a class="left carousel-control" href=".carousel-fade" role="button" data-slide="prev">';
+            echo '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>';
+            echo '<span class="sr-only">Previous</span>';
+        echo '</a>';
+        echo '<a class="right carousel-control" href=".carousel-fade" role="button" data-slide="next">';
+            echo '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
+            echo '<span class="sr-only">Next</span>';
+        echo '</a>';
     }
 }
 

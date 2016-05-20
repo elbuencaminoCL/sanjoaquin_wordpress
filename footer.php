@@ -74,45 +74,104 @@
         <script src="<?php bloginfo('template_directory'); ?>/js/infra.js"></script>
         <script src="<?php bloginfo('template_directory'); ?>/js/jquery.bxslider.js" type="text/javascript"></script>
     <? } ?>
-    <? if(is_page('extra-programaticas') || is_page('galeria-multimedia')) { ?>
+    <? if(is_page('academias') || is_page('galerias') || is_page('noticias')) { ?>
         <script src="<?php bloginfo('template_directory'); ?>/js/jquery.mixitup.js"></script>
         <script type="text/javascript">
             $(function(){
-                $('#cont-talleres').mixItUp();
-            });
-        </script>
-    <? } ?>
-    <? if(is_page('galeria-multimedia')) { ?>
-        <script>
-            $(document).ready(function () {
-                size_li = $("#cont-talleres .caluga-galeria").size();
-                x=3;
-                $('#cont-talleres .caluga-galeria:lt('+x+')').show();
-                $('.btn-cargar-abajo').click(function () {
-                    x= (x+9 <= size_li) ? x+9 : size_li;
-                    $('#cont-talleres .caluga-galeria:lt('+x+')').show();
-                    $('.btn-cargar-abajo').show();
-                    if(x == size_li){
-                        $('.btn-cargar-abajo').hide();
+                $('.cards-talleres').mixItUp({
+                    animation: {
+                        enable: true,
+                        effects: 'fade'
                     }
                 });
-                $('.btn-cargar-abajo').click(function () {
-                    x=(x-9<0) ? 3 : x-9;
-                    $('#myList li').not(':lt('+x+')').hide();
-                    $('#loadMore').show();
-                     $('#showLess').show();
-                    if(x == 9){
-                        $('#showLess').hide();
-                    }
-                });
+                $('#int-noticias').mixItUp();
             });
         </script>
     <? } ?>
     <? if(is_page('noticias')) { ?>
         <script>
             $(function(){
-                $('.widget_wysija').addClass('col-sm-6 col-xs-12');
                 $('form p:first-child').addClass('first');
+            });
+        </script>
+    <? } ?>
+    <? if(is_page('galerias')) { ?>
+        <script src="<?php bloginfo('template_directory'); ?>/js/jquery.mixitup-pagination.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $showMore = $('.glyphicon-menu-down');
+                $container = $('#cont-talleres');
+
+                $container.mixItUp({
+                    pagination: {
+                        limit: 9
+                    },
+                    callbacks: {
+                        onMixLoad: function(state) {
+                            var total = state.$targets.length;
+
+                            if (total > 8) {
+                                $showMore.addClass('visible');
+                            }
+                        }
+                    }
+                });
+                // Bind a click handler to the show more button
+                $showMore.on('click', function() {
+                    if (!$showMore.hasClass('show-more')) {
+                        $showMore.addClass('show-more glyphicon-menu-up').removeClass('glyphicon-menu-down');
+
+                        $container.mixItUp('paginate', {
+                            limit: 0
+                        });
+                    } else {
+                        $showMore.removeClass('show-more glyphicon-menu-down').addClass('glyphicon-menu-up');
+
+                        $container.mixItUp('paginate', {
+                            limit: 9
+                        });
+                    }
+                });
+            });
+        </script>
+    <? } ?>
+    <? if(is_page('noticias')) { ?>
+        <script src="<?php bloginfo('template_directory'); ?>/js/jquery.mixitup-pagination.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $showMore = $('.todas-noticias');
+                $container = $('#noticias');
+
+                $container.mixItUp({
+                    pagination: {
+                        limit: 8
+                    },
+                    callbacks: {
+                        onMixLoad: function(state) {
+                            var total = state.$targets.length;
+
+                            if (total > 8) {
+                                $showMore.addClass('visible');
+                            }
+                        }
+                    }
+                });
+                // Bind a click handler to the show more button
+                $showMore.on('click', function() {
+                    if (!$showMore.hasClass('show-more')) {
+                        $showMore.addClass('show-more').text('Esconder Noticias');
+
+                        $container.mixItUp('paginate', {
+                            limit: 0
+                        });
+                    } else {
+                        $showMore.removeClass('show-more').text('Ver Todas las Noticias');
+
+                        $container.mixItUp('paginate', {
+                            limit: 8
+                        });
+                    }
+                });
             });
         </script>
     <? } ?>

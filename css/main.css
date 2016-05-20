@@ -655,7 +655,7 @@ color: #585858;
   padding: 15px;
   color: #555;
   border-radius: 3px;
-  min-height: 165px;
+  min-height: 175px;
 }
 /* ¡¡¡AGREGADO POR RANDY!!! + + + INICIO */
 #accesos-directos a:hover {
@@ -790,6 +790,7 @@ color: #585858;
 #calendario .event-desc{
   background: #fff;
   padding: 10px 15px;
+  min-height: 100px;
 }
 #calendario .event-desc h4{
   font-size: 16px;
@@ -1337,7 +1338,7 @@ padding-top: 70px;
   text-transform: uppercase;
 }
 #noticias.noti-page {
-  padding-top: 0;
+  padding-top: 50px;
 }
 #ultimas-noticias h4.t-exo{
   padding: 10px 0px;
@@ -2135,7 +2136,7 @@ transform: translateY(-301px);
     margin-top: 95px;
   }
   #accesos-directos a{
-    height: 135px;
+    min-height: 160px;
     margin: 0px 0px 25px 0px;
   }
   #noticias {

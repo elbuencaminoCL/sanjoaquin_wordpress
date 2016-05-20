@@ -22,6 +22,7 @@
 	<!-- styles / fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Exo:400,700,600,300' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,600,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Exo+2:400,300,600,700' rel='stylesheet' type='text/css'>
 	<!-- styles / fonts -->
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/bootstrap.css" />
 	<link href="<?php bloginfo('template_directory'); ?>/style.css" rel="stylesheet" media="screen" />

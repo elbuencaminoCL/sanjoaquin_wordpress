@@ -1,40 +1,47 @@
 <?php get_header(); ?>
 	<!--main-->
 	<div id="main" class="clearfix">
-		<?
-			$news = get_page_by_path('nuestro-colegio/noticias');
-		?>
-		<div id="foto-encabezado" class="absolute">
-			<?php 
-				$image = get_field('_cabecera', $news);
-				$size = 'encabezado'; 
-				if($image) {
-					echo wp_get_attachment_image( $image, $size );
-				}
-			?>
-	    </div>
-		<h2 class="titulo-seccion center relative"><span><? echo get_the_title($news);?></span></h2>
+
+		<div id="foto-encabezado" class="">
+			<img class="img-responsive" src="img/banner-extra.jpg">
+			<div id="filtro-encab"></div>
+			<div class="titulo-encabezado container text-center">
+				<h3>NOTICIAS</h3>
+			</div>
+		</div>
 
 		<div class="container relative ficha-noticia" id="noticias">
 			<div class="row">
-				<div class="col-md-9 col-sm-12 noticia-selected">
+				<div class="col-sm-9 col-xs-12">
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-						<h1 class="t-exo upper"><? the_title();?></h3>
+						<h3 class="t-exo upper"><? the_title();?></h3>
 
 						<?php
 							if ( has_post_thumbnail() ) {
-								echo get_the_post_thumbnail($post->ID, 'news-det', array('class' => 'img-responsive'));
+								echo '<div class="col-sm-6 col-xs-12">';
+							    	echo get_the_post_thumbnail($post->ID, 'news-det', array('class' => 'img-responsive'));
+							    echo '</div>';
 							}
 						?>
 
 						<article class="clearfix">
 							<h4><span><img src="<?php bloginfo('template_directory'); ?>/img/iconos/calendario-mini-verde.svg"></span><?php echo get_the_date(); ?></h4>
 							<? the_content();?>
+
+							<a class="pull-right block ico-compartir">
+								<img src="img/iconos/ico-twitter.png">
+							</a>
+
+							<a class="pull-right block ico-compartir">
+								<img src="img/iconos/ico-facebook.png">
+							</a>
+
+							<p class="pull-right block p-compartir">Compartir:</p>
 						</article>
 
 						<div class="col-sm-4">
 							<div class="row">
-								<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('wpurl'); ?>/nuestro-colegio/noticias/">Volver a NOTICIAS</a>
+								<a class="btn-primary btn-lg btn-block btn-azul" href="noticias.html">Volver a NOTICIAS</a>
 							</div>
 						</div>
 					<?php endwhile; else: ?>

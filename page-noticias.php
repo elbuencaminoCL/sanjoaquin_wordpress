@@ -31,13 +31,11 @@
 							<input type="mail" placeholder="Escribe aquí tu mail"></input>
 						</div>
 
-						<div class="col-sm-2 col-xs-12">
+						<div class="col-sm-3 col-xs-12">
 							<button type="submit" class="btn-primary btn-lg btn-block btn-suscribirse">Suscribirse</button>
 						</div>
 
-						<div class="col-sm-1 col-xs-12">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><img src="<? bloginfo('template_directory');?>/img/iconos/cerrar.svg"></span></button>
-						</div>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><img src="<? bloginfo('template_directory');?>/img/iconos/cerrar.svg"></span></button>
 					</div><!--/Burbuja alerta para suscribirse-->					
 
 					<div id="ultimas-noticias" class="clearfix">
@@ -69,7 +67,7 @@
 	                                            echo content(20);
 	                                        }
 										?>
-										<a class="btn-primary btn-lg btn-block ver-noticia-principal" href="<? the_permalink();?>">Ver Noticia</a>
+										<a class="btn-primary btn-lg btn-block ver-noticia-principal" href="noticias_detalle.html">Ver Noticia</a>
 									</div>
 									<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 img-noti-principal hidden-xs">
 										<? 
@@ -96,7 +94,7 @@
 								<div class="collapse navbar-collapse padd-cero" id="">
 									<?php
 										global $ancestor;
-										$childcats = get_categories('child_of=19&hide_empty=0');
+										$childcats = get_categories('child_of=' . $cat . '&hide_empty=1');
 										echo '<ul class="nav nav-pills nav-stacked">';
 											echo '<li role="presentation" class="active"><a href="#">TODAS</a></li>';
 											foreach ($childcats as $childcat) {
@@ -120,37 +118,42 @@
 								<div class="flex">
 									<?php 
 			                            $news = array (
-			                                'category_name'  => 'noticias',
-			                                'posts_per_page' => 8
-			                            );
-			                            $new = new WP_Query( $news );
-			                            if ( $new->have_posts() ) {
-			                                while ( $new->have_posts() ) : $new->the_post();
-			                                    $excerpt= apply_filters('the_excerpt', get_post_field('post_excerpt', $new->ID));
-			                                    echo '<div class="col col-lg-3 col-md-3 col-sm-3 col-xs-12 car-noticia">';
-			                                        echo '<div class="col col-lg-12 col-md-12 col-sm-12 hidden-xs">';
-			                                            echo '<div class="row">';
-			                                                echo '<a class="block" href="'.get_the_permalink().'">';
-			                                                if(has_post_thumbnail()){
-			                                                    echo get_the_post_thumbnail($post->ID, 'news-home', array('class' => 'img-responsive'));
-			                                                } else {
-			                                                    echo '<img src="'.get_bloginfo('template_directory').'/img/default-news.jpg" class="img-responsive" alt="Colegio Santa María de Lo Cañas" />';
-			                                                }
-			                                                echo '</a>';
-			                                            echo '</div>';
-			                                        echo '</div>';
-			                                        echo '<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 detalle">';
-			                                            echo '<h4><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
-			                                            echo '<h5>'.get_the_date().'</h5>';
-			                                            if($excerpt) {
-			                                                echo '<p class="hidden-xs">'.$excerpt.'</p>';
-			                                            } else {
-			                                                echo '<p class="hidden-xs">'.content(12).'</p>';
-			                                            }
-			                                            echo '<a class="ver-mas" href="'.get_the_permalink().'">Ver Noticia</a>';
-			                                        echo '</div>';
-			                                    echo '</div>';
-			                                endwhile;
+                                			'category_name'  => 'noticias',
+                                			'posts_per_page' => 8
+                            			);
+                            			$new = new WP_Query( $news );
+                            			if ( $new->have_posts() ) {
+                                			while ( $new->have_posts() ) : $new->the_post();
+                                    			$excerpt= apply_filters('the_excerpt', get_post_field('post_excerpt', $new->ID));
+                                    			echo '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 card-noticia hidden-sm">';
+                                        			echo '<div class="col col-lg-12 shadow">';
+                                            			echo '<div class="row">';
+                                                			echo '<div class="col col-lg-12 col-md-12 col-sm-12 foto-titulo">';
+                                                    			echo '<div class="row">';
+                                                        			echo '<a class="block" href="'.get_the_permalink().'">';
+                                                        			if(has_post_thumbnail()){
+                                                            			echo get_the_post_thumbnail($post->ID, 'news-home', array('class' => 'img-responsive'));
+                                                        			} else {
+                                                            			echo '<img src="'.get_bloginfo('template_directory').'/img/default-news.jpg" class="img-responsive" alt="Colegio Santa María de Lo Cañas" />';
+                                                        			}
+                                                        			echo '</a>';
+                                                        			echo '<div class="opacidad-card"></div>';
+                                                        			echo '<p class="t-exo">'.get_the_title().'</p>';
+                                                    			echo '</div>';
+                                                			echo '</div>';
+                                                			echo '<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 detalle">';
+                                                    			echo '<p class="t-mini t-exo fecha-noti"><span><img src="'.get_bloginfo('template_directory').'/img/iconos/calendario-mini-blanco.svg"></span>'.get_the_date().'</p>';
+                                                    			if($excerpt) {
+                                                        			echo '<p class="hidden-xs">'.$excerpt.'</p>';
+                                                    			} else {
+                                                        			echo '<p class="hidden-xs">'.content(20).'</p>';
+                                                    			}
+                                                    			echo '<a class="ver-mas upper t-exo" href="#">Ver Noticia</a>';     
+                                                			echo '</div>';
+                                            			echo '</div>';
+                                        			echo '</div>';
+                                    			echo '</div>';
+                                			endwhile;
 			                                wp_reset_query();
 			                            }
 			                        ?>
